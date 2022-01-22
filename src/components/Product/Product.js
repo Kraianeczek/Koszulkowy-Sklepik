@@ -30,7 +30,7 @@ const Product = props => {
           <div className={styles.sizes}>
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
-              {props.sizes.map((size) => <li key={size.id}><button type="button" className={clsx(size.name === currentSize && styles.active)}>{size.name}</button></li>)}
+              {props.sizes.map((size) => <li key={size.name}><button onClick={() => setCurrentSize(size.name)} type="button" className={clsx(size.name === currentSize && styles.active)}>{size.name}</button></li>)}
               {/* <li><button type="button" className={styles.active}>{props.sizes[0].name}</button></li>
               <li><button type="button">{props.sizes[1].name}</button></li>
               <li><button type="button">{props.sizes[2].name}</button></li>
@@ -40,7 +40,7 @@ const Product = props => {
           <div className={styles.colors}>
             <h3 className={styles.optionLabel}>Colors</h3>
             <ul className={styles.choices}>
-            {props.colors.map((color) => <li key={color.id}><button type="button" className={clsx(prepareColorClassName(color), color === currentColor && styles.active)} /></li>)}
+            {props.colors.map((color) => <li key={color}><button onClick={() => setCurrentColor(color)} type="button" className={clsx(prepareColorClassName(color), color === currentColor && styles.active)} /></li>)}
               {/* <li><button type="button" className={clsx(styles.colorBlack, styles.active)} /></li>
               <li><button type="button" className={clsx(styles.colorRed)} /></li>
               <li><button type="button" className={clsx(styles.colorWhite)} /></li> */}
