@@ -7,8 +7,8 @@ const Products = () => {
 
   return (
     <section>
-      {products.map(product => 
-        <Product 
+      {products.map((product) => (
+        /* <Product 
           key={product.id} 
           id={product.id} 
           name={product.name}
@@ -16,8 +16,8 @@ const Products = () => {
           colors={product.colors}
           sizes={product.sizes}
           basePrice={product.basePrice}
-        /> )}
-        {/* <Product key={product.id} {...products} /> )} */}
+        /> )} */
+        <Product key={product.id} {...product} /> ))}
     </section>
   );
 };
