@@ -14,7 +14,7 @@ const Product = props => {
       <div className={styles.imageContainer}>
         <img 
           className={styles.image}
-          alt="Kodilla shirt"
+          alt={props.title}
           src={`${process.env.PUBLIC_URL}/images/products/shirt-${props.name}--${currentColor}.jpg`} />
       </div>
       <div>
@@ -26,18 +26,20 @@ const Product = props => {
           <div className={styles.sizes}>
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
-              <li><button type="button" className={styles.active}>S</button></li>
-              <li><button type="button">M</button></li>
-              <li><button type="button">L</button></li>
-              <li><button type="button">XL</button></li>
+              {props.sizes.map((size) => <li key={size.id}><button type="button" className={styles.active}>{size.name}</button></li>)}
+              {/* <li><button type="button" className={styles.active}>{props.sizes[0].name}</button></li>
+              <li><button type="button">{props.sizes[1].name}</button></li>
+              <li><button type="button">{props.sizes[2].name}</button></li>
+              <li><button type="button">{props.sizes[3].name}</button></li> */}
             </ul>
           </div>
           <div className={styles.colors}>
             <h3 className={styles.optionLabel}>Colors</h3>
             <ul className={styles.choices}>
-              <li><button type="button" className={clsx(styles.colorBlack, styles.active)} /></li>
+            {props.colors.map((color) => <li key={color.id}><button type="button" className={styles[color]}></button></li>)}
+              {/* <li><button type="button" className={clsx(styles.colorBlack, styles.active)} /></li>
               <li><button type="button" className={clsx(styles.colorRed)} /></li>
-              <li><button type="button" className={clsx(styles.colorWhite)} /></li>
+              <li><button type="button" className={clsx(styles.colorWhite)} /></li> */}
             </ul>
           </div>
           <Button className={styles.button}>
