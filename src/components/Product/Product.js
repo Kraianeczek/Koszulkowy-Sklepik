@@ -73,7 +73,7 @@ const showDetails = () => {
               <li><button type="button" className={clsx(styles.colorWhite)} /></li> */}
             </ul>
           </div>
-          <Button className={styles.button} onSubmit={() => showDetails()} type="submit">
+          <Button className={styles.button} onSubmit={showDetails()} type="submit">
             <span className="fa fa-shopping-cart" />
           </Button>
         </form>
