@@ -12,6 +12,32 @@ const Product = props => {
   const prepareColorClassName = color => {
     return styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
   }
+  
+const showDetails = () => {
+  console.log('Summary');
+  console.log('=======');
+  console.log('Name: ', props.title);
+  console.log('Price: ', getPrice());
+  console.log('Size: ', currentSize);
+  console.log('Color: ', currentColor);
+}
+
+  
+  const basePrice = props.basePrice;
+  const getPrice = () => {
+    const filtered = props.sizes.filter(s => s.name === currentSize);
+    if (filtered.length !== 1) {
+      console.log('Błąd');
+    } else {
+      const additionalPrice = filtered[0].additionalPrice;
+      const price = basePrice + additionalPrice;
+      // console.log('log',additionalPrice);
+      return price;
+    }
+    // const price = basePrice + filtered;
+    // console.log('price', price);
+    // return price;
+  }
 
   return (
     <article className={styles.product}>
@@ -24,13 +50,14 @@ const Product = props => {
       <div>
         <header>
           <h2 className={styles.name}>{props.title}</h2>
-          <span className={styles.price}>x {props.basePrice} $</span>
+          <span className={styles.price}>x {getPrice()} $</span>
         </header>
         <form>
           <div className={styles.sizes}>
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
               {props.sizes.map((size) => <li key={size.name}><button onClick={() => setCurrentSize(size.name)} type="button" className={clsx(size.name === currentSize && styles.active)}>{size.name}</button></li>)}
+              
               {/* <li><button type="button" className={styles.active}>{props.sizes[0].name}</button></li>
               <li><button type="button">{props.sizes[1].name}</button></li>
               <li><button type="button">{props.sizes[2].name}</button></li>
@@ -46,7 +73,7 @@ const Product = props => {
               <li><button type="button" className={clsx(styles.colorWhite)} /></li> */}
             </ul>
           </div>
-          <Button className={styles.button}>
+          <Button className={styles.button} onSubmit={() => showDetails()} type="submit">
             <span className="fa fa-shopping-cart" />
           </Button>
         </form>
