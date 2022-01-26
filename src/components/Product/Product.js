@@ -1,10 +1,11 @@
 import styles from './Product.module.scss';
-import Button from '../Button/Button';
+// import Button from '../Button/Button';
 import { PropTypes } from 'prop-types';
 import { useState } from 'react';
 import ProductImage from '../ProductImage/ProductImage';
-import OptionSize from '../OptionSize/OptionSize';
-import OptionColor from '../OptionColor/OptionColor';
+// import OptionSize from '../ProductForm/OptionSize/OptionSize';
+// import OptionColor from '../OptionColor/OptionColor';
+import ProductForm from '../ProductForm/ProductForm';
 
 const Product = props => {
   console.log(props);
@@ -41,13 +42,15 @@ const Product = props => {
           <h2 className={styles.name}>{props.title}</h2>
           <span className={styles.price}>x {getPrice()} $</span>
         </header>
-        <form>
-          <OptionSize sizes={props.sizes} currentSize={currentSize} setCurrentSize={setCurrentSize}/>
-          <OptionColor colors={props.colors} currentColor={currentColor} setCurrentColor={setCurrentColor} />
-          <Button className={styles.button} onClick={() => showDetails()}>
-            <span className="fa fa-shopping-cart" />
-          </Button>
-        </form>
+        <ProductForm 
+          sizes={props.sizes} 
+          currentSize={currentSize} 
+          setCurrentSize={setCurrentSize} 
+          colors={props.colors} 
+          currentColor={currentColor} 
+          setCurrentColor={setCurrentColor} 
+          showDetails={showDetails }>           
+        </ProductForm>
       </div>
     </article>
   )
