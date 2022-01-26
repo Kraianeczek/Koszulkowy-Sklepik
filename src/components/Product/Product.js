@@ -4,6 +4,7 @@ import Button from '../Button/Button';
 import { PropTypes } from 'prop-types';
 import { useState } from 'react';
 import ProductImage from '../ProductImage/ProductImage';
+import OptionSize from '../OptionSize/OptionSize';
 
 const Product = props => {
   console.log(props);
@@ -43,29 +44,19 @@ const Product = props => {
   return (
     <article className={styles.product}>
       <ProductImage title={props.title} name={props.name} currentColor={currentColor} />
-      {/* <div className={styles.imageContainer}>
-        <img 
-          className={styles.image}
-          alt={props.title}
-          src={`${process.env.PUBLIC_URL}/images/products/shirt-${props.name}--${currentColor}.jpg`} />
-      </div> */}
       <div>
         <header>
           <h2 className={styles.name}>{props.title}</h2>
           <span className={styles.price}>x {getPrice()} $</span>
         </header>
         <form>
-          <div className={styles.sizes}>
+          <OptionSize sizes={props.sizes} currentSize={currentSize} setCurrentSize={setCurrentSize}/>
+          {/* <div className={styles.sizes}>
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
-              {props.sizes.map((size) => <li key={size.name}><button onClick={() => setCurrentSize(size.name)} type="button" className={clsx(size.name === currentSize && styles.active)}>{size.name}</button></li>)}
-              
-              {/* <li><button type="button" className={styles.active}>{props.sizes[0].name}</button></li>
-              <li><button type="button">{props.sizes[1].name}</button></li>
-              <li><button type="button">{props.sizes[2].name}</button></li>
-              <li><button type="button">{props.sizes[3].name}</button></li> */}
+              {props.sizes.map((size) => <li key={size.name}><button onClick={() => setCurrentSize(size.name)} type="button" className={clsx(size.name === currentSize && styles.active)}>{size.name}</button></li>)}     
             </ul>
-          </div>
+          </div> */}
           <div className={styles.colors}>
             <h3 className={styles.optionLabel}>Colors</h3>
             <ul className={styles.choices}>
