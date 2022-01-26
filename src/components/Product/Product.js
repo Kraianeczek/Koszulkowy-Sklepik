@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import Button from '../Button/Button';
 import { PropTypes } from 'prop-types';
 import { useState } from 'react';
+import ProductImage from '../ProductImage/ProductImage';
 
 const Product = props => {
   console.log(props);
@@ -13,14 +14,14 @@ const Product = props => {
     return styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
   }
   
-const showDetails = () => {
+  const showDetails = () => {
   console.log('Summary');
   console.log('=======');
   console.log('Name: ', props.title);
   console.log('Price: ', getPrice());
   console.log('Size: ', currentSize);
   console.log('Color: ', currentColor);
-}
+  }
 
   
   const basePrice = props.basePrice;
@@ -41,12 +42,13 @@ const showDetails = () => {
 
   return (
     <article className={styles.product}>
-      <div className={styles.imageContainer}>
+      <ProductImage title={props.title} name={props.name} currentColor={currentColor} />
+      {/* <div className={styles.imageContainer}>
         <img 
           className={styles.image}
           alt={props.title}
           src={`${process.env.PUBLIC_URL}/images/products/shirt-${props.name}--${currentColor}.jpg`} />
-      </div>
+      </div> */}
       <div>
         <header>
           <h2 className={styles.name}>{props.title}</h2>
@@ -73,7 +75,7 @@ const showDetails = () => {
               <li><button type="button" className={clsx(styles.colorWhite)} /></li> */}
             </ul>
           </div>
-          <Button className={styles.button} onSubmit={showDetails()} type="submit">
+          <Button className={styles.button} onClick={() => showDetails()}>
             <span className="fa fa-shopping-cart" />
           </Button>
         </form>
