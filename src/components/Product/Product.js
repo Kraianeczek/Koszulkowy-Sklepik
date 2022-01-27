@@ -1,10 +1,10 @@
 import styles from './Product.module.scss';
-// import Button from '../Button/Button';
 import { PropTypes } from 'prop-types';
 import { useState } from 'react';
 import ProductImage from '../ProductImage/ProductImage';
 // import OptionSize from '../ProductForm/OptionSize/OptionSize';
 // import OptionColor from '../OptionColor/OptionColor';
+// import Button from '../Button/Button';
 import ProductForm from '../ProductForm/ProductForm';
 
 const Product = props => {
@@ -56,6 +56,7 @@ const Product = props => {
   )
 };
 
-Product.propTypes = {props: PropTypes.object}
+Product.propTypes = { colors: PropTypes.array.isRequired, sizes: PropTypes.array.isRequired, title: PropTypes.string.isRequired, 
+                      basePrice: PropTypes.number.isRequired, name: PropTypes.string.isRequired }
 
 export default Product;

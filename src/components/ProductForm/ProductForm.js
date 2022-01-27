@@ -2,6 +2,7 @@ import OptionSize from "./OptionSize/OptionSize";
 import OptionColor from "./OptionColor/OptionColor";
 import Button from "./Button/Button";
 import styles from './ProductForm.module.scss'
+import PropTypes from 'prop-types'
 
 const ProductForm = props => {
     return (
@@ -14,5 +15,10 @@ const ProductForm = props => {
         </form>
     )
 }
+
+ProductForm.propTypes = { sizes: PropTypes.array.isRequired, currentSize: PropTypes.string.isRequired, setCurrentSize: PropTypes.func.isRequired,
+                        colors: PropTypes.array.isRequired, currentColor: PropTypes.string.isRequired, setCurrentColor: PropTypes.func.isRequired,
+                        showDetails: PropTypes.func.isRequired
+                    }
 
 export default ProductForm;
