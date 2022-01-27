@@ -1,6 +1,6 @@
 import styles from './Product.module.scss';
 import { PropTypes } from 'prop-types';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import ProductImage from '../ProductImage/ProductImage';
 // import OptionSize from '../ProductForm/OptionSize/OptionSize';
 // import OptionColor from '../OptionColor/OptionColor';
@@ -22,7 +22,8 @@ const Product = props => {
   }
   
   const basePrice = props.basePrice;
-  const getPrice = () => {
+  const getPrice = useMemo(() => {
+    return() => {
     const filtered = props.sizes.filter(s => s.name === currentSize);
     if (filtered.length !== 1) {
       console.log('Błąd');
@@ -33,6 +34,7 @@ const Product = props => {
       return price;
     }
   }
+}, [basePrice, currentSize, props.sizes]);
 
   return (
     <article className={styles.product}>

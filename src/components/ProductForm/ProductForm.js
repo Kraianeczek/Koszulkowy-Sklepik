@@ -9,7 +9,7 @@ const ProductForm = props => {
         <form>
             <OptionSize sizes={props.sizes} currentSize={props.currentSize} setCurrentSize={props.setCurrentSize}/>
             <OptionColor colors={props.colors} currentColor={props.currentColor} setCurrentColor={props.setCurrentColor} />
-            <Button className={styles.button} onClick={() => props.showDetails()}>
+            <Button className={styles.button} onClick={() => props.showDetails()}  >
             <span className="fa fa-shopping-cart" />
           </Button>
         </form>
